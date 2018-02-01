@@ -1,0 +1,7 @@
+version: '2'
+services:
+  tf:
+    image: gcr.io/tensorflow/tensorflow:latest-gpu
+    command: bash /project/driver/cook.sh
+    volumes:
+      - ../:/project
