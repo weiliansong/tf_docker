@@ -79,3 +79,13 @@ class GDrive(object):
       g_file.Upload()
 
       print('title: %s, mimeType: %s' % (g_file['title'], g_file['mimeType']))
+
+  def download(self, fname, fid):
+    if not self.authenticated:
+      self.authenticated()
+
+    if not os.path.exists('/tmp/gdrive'):
+      os.mkdir('/tmp/gdrive')
+
+    g_file = drive.CreateFile({'id': fid})
+    g_file.GetContentFile('/tmp/gdrive/' + fname)
